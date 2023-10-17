@@ -1,17 +1,39 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, Image } from "react-native";
 import { Button, Paragraph } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
+import * as ImagePicker from "expo-image-picker";
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [user, setUser] = useState("");
   const [conf, setConf] = useState("");
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
 
   const handleRegister = () => {
+    if (pass !== conf) {
+      alert("Senhas não conferem!");
+      return;
+    }
     createUserWithEmailAndPassword(auth, email, pass, conf)
       .then((userCredential) => {
         console.log("Usuário criado com sucesso!");
@@ -57,14 +79,40 @@ export default function Register({ navigation }) {
         onChangeText={setPass}
         // mode="outlined"
         style={styles.InputL}
+        secureTextEntry={true}
       />
       <TextInput
         label={"Confirme a senha"}
-        placeholder="Digite a Senha"
+        placeholder="Digite a senha novamente"
         value={conf}
         onChangeText={setConf}
         style={styles.InputL}
+        secureTextEntry={true}
       />
+      {image ? (
+              <>
+                <Image
+                  source={{ uri: image }}
+                  style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: "50%",
+                    alignSelf: "center",
+                    marginTop: 10,
+                    marginBottom: 10,
+                    border: "4px #16337E solid",
+                  }}
+                />
+              </>
+            ) : (
+              <Button
+                onPress={pickImage}
+                style={styles.botao}
+                textColor="white"
+              >
+                Escolher foto
+              </Button>
+            )}
       <Button
         style={styles.ButtonC}
         onPress={handleRegister}>
@@ -73,3 +121,4 @@ export default function Register({ navigation }) {
     </View>
   );
 }
+
