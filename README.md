@@ -1,7 +1,7 @@
 # Assim que clonar o repositório
 ## Siga os seguintes papos:
 * **Entre na pasta pelo terminal**
-  * `cd ClaireJuliani/`
+  * `cd CLAIRE/`
 
 * **e use o seguinte código**
 ```
