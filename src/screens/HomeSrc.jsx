@@ -1,10 +1,12 @@
 import { Text } from "react-native-paper";
 import { Image, ScrollView, TouchableOpacity, View } from "react-native";
 import styles from "../utils/styles";
+import Header from "../bases/Header";
 
 export default function HomeSrc() {
   return (
     <View style={styles.containerH}>
+      <Header title="HomeScreen"/>
       {/* Carrosel de imagens ou um slider */}
       <View style={styles.carossel}>
         <Image source={require("../img/gato.jpg")} style={{...styles.imagemC, width:400}} />

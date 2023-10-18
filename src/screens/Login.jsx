@@ -4,6 +4,7 @@ import { TextInput, Button } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import styles from "../utils/styles";
+import Header from "../bases/Header";
 
 export default function Login({navigation}){
 
@@ -35,6 +36,7 @@ export default function Login({navigation}){
 
     return (
         <View>
+            <Header title="Login"/>
             <View style={styles.BodyL}>
                 <TextInput
                 placeholder="Email..."
