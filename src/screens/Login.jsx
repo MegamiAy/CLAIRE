@@ -36,7 +36,6 @@ export default function Login({navigation}){
 
     return (
         <View>
-            <Header title="Login"/>
             <View style={styles.BodyL}>
                 <TextInput
                 placeholder="Email..."
@@ -56,6 +55,9 @@ export default function Login({navigation}){
                  {/* <TouchableOpacity onPress={() => navigation.navigate("Recuperar")} style={styles.Touch}>
                     <Text>Esqueceu a senha?</Text>
                 </TouchableOpacity> */}
+                <TouchableOpacity onPress={() => navigation.navigate("Adicionar Produto")} style={styles.Touch}>
+                    <Text>TESTE</Text>
+                </TouchableOpacity>
                 <Button
                 onPress={handleLogin}
                 mode="contained"

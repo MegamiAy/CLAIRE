@@ -4,7 +4,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../config/firebase";
 import * as ImagePicker from "expo-image-picker";
-import styles from "../utils/style";
+import styles from "../utils/styles";
 
 export default function CadProd() {
     const [title, setTitle] = useState("");
@@ -23,10 +23,23 @@ export default function CadProd() {
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1,
-        });
+        })
 
-        if (!result.canceled) {
+
+        if (image === null) {
             setImage(result.uri);
+            return
+        } else if (image1 === null) {
+            setImage1(result.uri);
+            return
+        } else if (image2 === null) {
+            setImage2(result.uri);
+            return
+        } else if (image3 === null) {
+            setImage3(result.uri);
+            return
+        } else {
+            alert("Você já selecionou 4 imagens");
         }
     };
 
@@ -104,14 +117,24 @@ export default function CadProd() {
                     />
                     {image && <ImageComponent />}
                     <Button 
-                    // title="Escolha uma imagem" 
                     onPress={pickImage}
                     style={styles.ButtonH}
                     >Escolha uma imagem</Button>
+                    <Button 
+                    onPress={pickImage}
+                    style={styles.ButtonH}
+                    >Escolha a segunda imagem</Button>
+                    <Button 
+                    onPress={pickImage}
+                    style={styles.ButtonH}
+                    >Escolha a terceira imagem</Button>
+                    <Button 
+                    onPress={pickImage}
+                    style={styles.ButtonH}
+                    >Escolha a quarta imagem</Button>
                     <Button
                         onPress={inserirPost}
                         disabled={!title || !content}
-                        // mode="outlined"
                         style={styles.ButtonH}
                     >Postar</Button>
                 </View>
