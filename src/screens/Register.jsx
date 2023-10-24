@@ -4,13 +4,24 @@ import { View, TextInput } from "react-native";
 import { Button, Paragraph } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
+import * as ImagePicker from "expo-image-picker";
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [user, setUser] = useState("");
   const [conf, setConf] = useState("");
+  const [image, setImage] = useState(null); 
 
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+    })
+    setImage(result.uri);
+  }
   const handleRegister = () => {
     createUserWithEmailAndPassword(auth, email, pass, conf)
       .then((userCredential) => {
@@ -28,7 +39,7 @@ export default function Register({ navigation }) {
         } else if (errorCode === "auth/weak-password") {
           console.log("Senha fraca!");
         }
-      });
+      });  //  
   };
 
   return (
@@ -65,6 +76,26 @@ export default function Register({ navigation }) {
         onChangeText={setConf}
         style={styles.InputL}
       />
+      {image
+        ? <Image
+          source={{ uri: image }}
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: "50%",
+            alignSelf: "center",
+            marginTop: 10,
+            marginBottom: 10,
+            border: "4px #16337E solid",
+          }}
+        />
+        : null
+      }
+      <Button
+        style={styles.ButtonC}
+        onPress={pickImage}>
+        Escolha uma imagem
+      </Button>
       <Button
         style={styles.ButtonC}
         onPress={handleRegister}>
