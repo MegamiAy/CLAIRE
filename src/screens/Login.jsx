@@ -4,7 +4,6 @@ import { TextInput, Button } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import styles from "../utils/styles";
-import Header from "../bases/Header";
 
 export default function Login({navigation}){
 
@@ -15,7 +14,7 @@ export default function Login({navigation}){
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 console.log("Usuário UID: ", user.uid)
-                navigation.navigate('Home')
+                navigation.navigate('HomeScr')
             } else {
                 console.log("Usuário não logado")
             }
@@ -48,8 +47,9 @@ export default function Login({navigation}){
                 value={senha}
                 onChangeText={setSenha}
                 style={styles.InputL}
+                secureTextEntry={true}
                 />
-                <TouchableOpacity onPress={() => navigation.navigate("Registro")} style={styles.Touch}>
+                <TouchableOpacity onPress={() => navigation.navigate("Register")} style={styles.Touch}>
                     <Text>Cadastre-se</Text>
                 </TouchableOpacity>
                  {/* <TouchableOpacity onPress={() => navigation.navigate("Recuperar")} style={styles.Touch}>

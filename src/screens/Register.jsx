@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, Image } from "react-native";
 import { Button, Paragraph } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
@@ -12,6 +12,8 @@ export default function Register({ navigation }) {
   const [user, setUser] = useState("");
   const [conf, setConf] = useState("");
   const [image, setImage] = useState(null); 
+  const [imageblob, setImageblob] = useState(null);
+  const [blobType, setBlobType] = useState(null); 
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -21,15 +23,22 @@ export default function Register({ navigation }) {
         quality: 1,
     })
     setImage(result.uri);
+    const { uri } = result.assets[0];
+    const fileName = uri.split('/').pop();
+    const fileType = fileName.split('.').pop();
+    setImageblob({ uri });
+    setBlobType (fileType);
   }
-  const handleRegister = () => {
+
+  async function handleRegister(){
+    if (image && pass === conf) {
     createUserWithEmailAndPassword(auth, email, pass, conf)
       .then((userCredential) => {
-        console.log("Usuário criado com sucesso!");
+        alert("Usuário criado com sucesso!");
         navigation.navigate("Login");
       })
       .catch((error) => {
-        console.log("Falha ao criar usuário: " + error);
+        alert("Falha ao criar usuário: " + error);
 
         const errorCode = error.code;
         if (errorCode === "auth/email-already-in-use") {
@@ -39,7 +48,7 @@ export default function Register({ navigation }) {
         } else if (errorCode === "auth/weak-password") {
           console.log("Senha fraca!");
         }
-      });  //  
+      })};  //  
   };
 
   return (
@@ -68,6 +77,7 @@ export default function Register({ navigation }) {
         onChangeText={setPass}
         // mode="outlined"
         style={styles.InputL}
+        secureTextEntry={true}
       />
       <TextInput
         label={"Confirme a senha"}
@@ -75,6 +85,7 @@ export default function Register({ navigation }) {
         value={conf}
         onChangeText={setConf}
         style={styles.InputL}
+        secureTextEntry={true}
       />
       {image
         ? <Image
