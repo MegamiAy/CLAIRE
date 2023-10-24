@@ -49,7 +49,7 @@ export default function Login({navigation}){
                 onChangeText={setSenha}
                 style={styles.InputL}
                 />
-                <TouchableOpacity onPress={() => navigation.navigate("Registro")} style={styles.Touch}>
+                <TouchableOpacity onPress={() => navigation.navigate("Register")} style={styles.Touch}>
                     <Text>Cadastre-se</Text>
                 </TouchableOpacity>
                  {/* <TouchableOpacity onPress={() => navigation.navigate("Recuperar")} style={styles.Touch}>
