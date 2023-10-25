@@ -13,7 +13,7 @@ export default function RecPass() {
         try{
             await sendPasswordResetEmail(auth, email);
             alert("Email enviado com sucesso!")
-            navigation.navig
+            navigation.navigate("Login")
         } catch(error){
             if (error.code === 'auth/user-not-found'){
                 alert("Email não encontrado!")

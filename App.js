@@ -15,10 +15,10 @@ export default function App() {
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
         <Menu.Screen name='Login' component={Login}/>
-        <Menu.Screen name='Register' component={Register}/>
-        <Menu.Screen name='HomeScr' component={HomeSrc}/>
-        <Menu.Screen name='LogOut' component={LogOut}/>
-        <Menu.Screen name='CadProd' component={CadProd}/>
+        <Menu.Screen name='Registro' component={Register}/>
+        <Menu.Screen name='Home' component={HomeSrc}/>
+        <Menu.Screen name='Sair' component={LogOut}/>
+        <Menu.Screen name='Cadastrar Produtos' component={CadProd}/>
         <Menu.Screen name='Recuperar' component={RecPass}/>
       </Menu.Navigator>
     </NavigationContainer>
