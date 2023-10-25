@@ -4,6 +4,7 @@ import { TextInput, Button } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import styles from "../utils/styles";
+import Footer from "../bases/Footer";
 
 export default function Login({navigation}){
 

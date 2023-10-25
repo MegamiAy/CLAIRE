@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
 
   //Home
   containerH: {
-    alignItems: "center",
+    // alignItems: "center",
   },
   imagemC: {
     minWidth: 460,
@@ -100,6 +100,23 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+
+  //FOOTER
+
+  title: {
+    color:"#fff",
+    
+  },
+
+  a: {
+    alignItems: "center",
+    
+  },
+
+  subtitle: {
+    color: "#fff",
+  }
+
 });
 
 export default styles;
