@@ -52,10 +52,10 @@ export default function Login({navigation}){
                 <TouchableOpacity onPress={() => navigation.navigate("Register")} style={styles.Touch}>
                     <Text>Cadastre-se</Text>
                 </TouchableOpacity>
-                 {/* <TouchableOpacity onPress={() => navigation.navigate("Recuperar")} style={styles.Touch}>
+                 <TouchableOpacity onPress={() => navigation.navigate("Recuperar")} style={styles.Touch}>
                     <Text>Esqueceu a senha?</Text>
-                </TouchableOpacity> */}
-                <TouchableOpacity onPress={() => navigation.navigate("Adicionar Produto")} style={styles.Touch}>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("CadProd")} style={styles.Touch}>
                     <Text>TESTE</Text>
                 </TouchableOpacity>
                 <Button
