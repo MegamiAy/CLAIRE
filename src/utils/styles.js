@@ -8,9 +8,20 @@ export const styles = StyleSheet.create({
     // backgroundColor: ""
   },
 
+  //LOGIN
+
+  FullBodyL: {
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   BodyL: {
     alignItems: "center",
     fontFamily: "arial",
+    width: "80%",
+    marginTop: 50,
   },
 
   ButtonH: {
@@ -51,8 +62,19 @@ export const styles = StyleSheet.create({
     borderRadius: 7,
   },
 
+  imagemLR: {
+    minHeight: 45,
+    minWidth: 350,
+    marginBottom: 30,
+  },
+
+  titleLR: {
+    fontWeight: 200,
+    fontSize: 30,
+  },
+
   Touch: {
-    marginTop: 5,
+    marginTop: 15,
     marginBottom: 5,
   },
 
@@ -110,12 +132,14 @@ export const styles = StyleSheet.create({
 
   a: {
     alignItems: "center",
-    
+
   },
 
   subtitle: {
     color: "#fff",
-  }
+  },
+
+
 
 });
 
