@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { auth } from "../config/firebase";
 import styles from "../utils/styles";
 
+import { FaArrowLeft } from 'react-icons/fa';
+
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -34,8 +36,23 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.FullBodyL}>
-        <Image source={require("../img/logo.png")} style={{...styles.imagemLR}} />
-        <Text style={styles.titleLR}>Login</Text>
+      <Button
+        mode="contained"
+        style={styles.ButtonLT}
+        onPress={() => navigation.navigate("F*da-se")}
+        textColor= "#000"
+      >
+       <FaArrowLeft />
+      </Button>
+      {/* <Image source={require("../img/logo.png")} style={{...styles.imagemLR}} /> */}
+      <Text style={styles.titleLR}>Login</Text>
+      <View style={styles.subTitle}>
+        <Text style={styles.subTitleLR}>Bem-vindo(a) de volta</Text>
+        <Text style={styles.subTitleLR}>
+          Por favor faça login para continuar
+        </Text>
+      </View>
+
       <View style={styles.BodyL}>
         <TextInput
           placeholder="Email..."
@@ -65,12 +82,12 @@ export default function Login({ navigation }) {
         <Button onPress={handleLogin} mode="contained" style={styles.ButtonL}>
           Logar
         </Button>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate("Registro")}
           style={styles.Touch}
         >
           <Text>Cadastre-se</Text>
-        </TouchableOpacity>     
+        </TouchableOpacity> */}
       </View>
     </View>
   );

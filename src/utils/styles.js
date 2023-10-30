@@ -8,12 +8,60 @@ export const styles = StyleSheet.create({
     // backgroundColor: ""
   },
 
+  // Start
+
+  FullBodyS: {
+    alignItems: "center",
+    height: "100%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+  },
+
+  ButtonS: {
+    width: "70%",
+    height: 50,
+    justifyContent: "center",
+    borderRadius: 0,
+    marginBottom: 20,
+    backgroundColor: "#000",
+  },
+
+  ButtonS2: {
+    width: "70%",
+    height: 50,
+    justifyContent: "center",
+    borderRadius: 0,
+    marginBottom: 20,
+    borderWidth: 3,
+    borderColor: "#000",
+  },
+
+  BoxS: {
+    width: "100%",
+    height: "40%",
+    alignItems: "center",
+  },
+
+  imagemS: {
+    height: 150,
+    width: 150,
+  },
+
+  TextS: {
+    fontWeight: "bold",
+    marginTop: 20,
+  },
+
+  TextS2: {
+    fontWeight: 200,
+  },
+
   //LOGIN
 
   FullBodyL: {
     backgroundColor: "#fff",
     height: "100%",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
   },
 
@@ -34,10 +82,19 @@ export const styles = StyleSheet.create({
     color: "#fff",
   },
 
+  ButtonLT: {
+    width: "35%",
+    height: 50,
+    marginBottom: 78,
+    marginTop: 25,
+    backgroundColor: "#fff",
+    marginRight: 310,
+  },
+
   ButtonL: {
     width: "70%",
     height: 50,
-    marginTop: 20,
+    marginTop: 12,
     justifyContent: "center",
     backgroundColor: "#000",
     borderRadius: 0,
@@ -69,8 +126,20 @@ export const styles = StyleSheet.create({
   },
 
   titleLR: {
-    fontWeight: 200,
-    fontSize: 30,
+    fontWeight: "bold",
+    fontSize: 40,
+    marginRight: 225,
+  },
+
+  subTitle: {
+    alignItems:  "flex-start",
+    marginTop: 5,
+    marginRight: 110,
+  },
+
+  subTitleLR: {
+    fontWeight: 300,
+    fontSize: 15,
   },
 
   Touch: {
@@ -96,6 +165,8 @@ export const styles = StyleSheet.create({
     borderRadius: 0,
   },
 
+  // REGISTER
+
   //Home
   containerH: {
     // alignItems: "center",
@@ -104,7 +175,7 @@ export const styles = StyleSheet.create({
     minWidth: 460,
     minHeight: 320,
     alignSelf: "stretch",
-    marginBottom:20,
+    marginBottom: 20,
   },
   colections: {
     width: "80%",
@@ -126,21 +197,16 @@ export const styles = StyleSheet.create({
   //FOOTER
 
   title: {
-    color:"#fff",
-    
+    color: "#fff",
   },
 
   a: {
     alignItems: "center",
-
   },
 
   subtitle: {
     color: "#fff",
   },
-
-
-
 });
 
 export default styles;
