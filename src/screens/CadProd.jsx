@@ -1,4 +1,4 @@
-import { Platform, View, Image } from "react-native";
+import { Platform, View, Image, TouchableOpacityBase, TouchableOpacity } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
@@ -12,10 +12,8 @@ export default function CadProd() {
     const [price, setPrice] = useState("");
     const [size, setSize] = useState("");
     const [collectionS, setCollection] = useState(null);
-    const [image, setImage] = useState(null); 
-    const [image1, setImage1] = useState(null);
-    const [image2, setImage2] = useState(null);
-    const [image3, setImage3] = useState(null);// Moved outside of inserirPost
+    const [imageList, setImageList] = useState([])
+    const [textimage, setTextImage] = useState("Selecione a primeira imagem")
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -23,26 +21,11 @@ export default function CadProd() {
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1,
+            allowsMultipleSelection: true
         })
 
-
-        if (image === null) {
-            setImage(result.uri);
-            return
-        } else if (image1 === null) {
-            setImage1(result.uri);
-            return
-        } else if (image2 === null) {
-            setImage2(result.uri);
-            return
-        } else if (image3 === null) {
-            setImage3(result.uri);
-            return
-        } else {
-            alert("Você já selecionou 4 imagens");
-        }
-    };
-
+        setImageList(imageList => [...imageList, result])
+    }
     async function inserirPost() {
         try {
             if (image) {
@@ -86,8 +69,8 @@ export default function CadProd() {
 
     const ImageComponent = () => {
         if (Platform.OS === "web") {
-            return <img src={image} style={{ width: 200, height: 200 }} />;
-        } else {
+            return (<img src={imageList} style={{ width: 200, height: 400 }} />);
+        } else  {
             return (
                 <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
             );
@@ -111,27 +94,17 @@ export default function CadProd() {
                     />
                     <TextInput
                         label="Preço"
-                        value={content}
+                        value={price}
                         onChangeText={setPrice}
                         style={styles.InputL}
                     />
-                    {image && <ImageComponent />}
+
+                    {imageList }
+
                     <Button 
                     onPress={pickImage}
                     style={styles.ButtonH}
-                    >Escolha uma imagem</Button>
-                    <Button 
-                    onPress={pickImage}
-                    style={styles.ButtonH}
-                    >Escolha a segunda imagem</Button>
-                    <Button 
-                    onPress={pickImage}
-                    style={styles.ButtonH}
-                    >Escolha a terceira imagem</Button>
-                    <Button 
-                    onPress={pickImage}
-                    style={styles.ButtonH}
-                    >Escolha a quarta imagem</Button>
+                    >{textimage}</Button>
                     <Button
                         onPress={inserirPost}
                         disabled={!title || !content}

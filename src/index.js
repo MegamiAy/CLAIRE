@@ -8,6 +8,7 @@ import CadProd from "./screens/CadProd";
 import RecPass from "./screens/RecPass";
 import User from "./screens/User";
 import Cart from "./screens/Cart";
+import Start from "./screens/Start";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function RootNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name="Start" component={Start} options={{headerShown:false}}/>
                 <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
                 <Stack.Screen name="Registro" component={Register} options={{headerShown:false}}/>
                 <Stack.Screen name="Home" component={HomeSrc} options={{headerShown:false}}/>
