@@ -2,6 +2,9 @@
 
 import { StyleSheet } from "react-native";
 
+const WIDTH = 400;
+const HEIGHT = 800;
+
 export const styles = StyleSheet.create({
   BodyH: {
     alignItems: "center",
@@ -77,6 +80,7 @@ export const styles = StyleSheet.create({
   //Home
   containerH: {
     alignItems: "center",
+    overflow: "hidden",
   },
   imagemC: {
     minWidth: 460,
@@ -100,6 +104,31 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+  //SLIDESSSSS
+  containerS: {
+    flex: 1,
+    paddingTop: 100,
+  },
+  wrap: {
+    width: WIDTH,
+    height: HEIGHT * 0.25,
+    overflow: "hidden",
+
+  },
+  wrapB: {
+    position: "absolute",
+    bottom: 0,
+    flexDirection: "row",
+    alignSelf: "center",
+  },
+  bActive: {
+    color: "black",
+    margin: 3,
+  },
+  b: {
+    margin: 3,
+    color: "gray",
+  }
 });
 
 export default styles;

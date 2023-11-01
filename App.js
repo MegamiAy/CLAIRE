@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
+import HomeSrc from './src/screens/HomeSrc';
+
 
 const Menu = createDrawerNavigator();
 
@@ -12,6 +14,7 @@ export default function App() {
       <Menu.Navigator screenOptions={screenOptions}>
         <Menu.Screen name='Login' component={Login}/>
         <Menu.Screen name='Register' component={Register}/>
+        <Menu.Screen name='Home' component={HomeSrc}/>
       </Menu.Navigator>
     </NavigationContainer>
   );
