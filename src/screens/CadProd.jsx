@@ -69,10 +69,18 @@ export default function CadProd() {
 
     const ImageComponent = () => {
         if (Platform.OS === "web") {
-            return (<img src={imageList} style={{ width: 200, height: 400 }} />);
+            return (imageList.map((image, index) => (
+                <div key={index}>
+                    <img src={image.uri} style={{ width: 200, height: 200 }}  />
+                </div>
+            )));
         } else  {
             return (
-                <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+                imageList.map((image) => (
+                    <View key={index}>
+                        <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />
+                    </View>
+                )) 
             );
         }
     };
@@ -99,7 +107,7 @@ export default function CadProd() {
                         style={styles.InputL}
                     />
 
-                    {imageList }
+                    {imageList && <ImageComponent /> }
 
                     <Button 
                     onPress={pickImage}
