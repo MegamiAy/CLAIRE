@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("Usuário UID: ", user.uid);
-        navigation.navigate("HomeScr");
+        navigation.navigate("Home");
       } else {
         console.log("Usuário não logado");
       }
@@ -58,7 +58,7 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
         {/* <TouchableOpacity
           onPress={() => navigation.navigate("CadProd")}
-          style={styles.Touch}
+          style={styles.Touch}  
         >
           <Text>TESTE</Text>
         </TouchableOpacity> */}
