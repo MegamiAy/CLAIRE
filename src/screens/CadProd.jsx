@@ -1,10 +1,12 @@
 import { Platform, View, Image, TouchableOpacityBase, TouchableOpacity } from "react-native";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Text } from "react-native-paper";
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../config/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import styles from "../utils/styles";
+import { storage } from "../config/firebase";
 
 export default function CadProd() {
     const [title, setTitle] = useState("");
@@ -13,23 +15,33 @@ export default function CadProd() {
     const [size, setSize] = useState("");
     const [collectionS, setCollection] = useState(null);
     const [imageList, setImageList] = useState([])
-    const [textimage, setTextImage] = useState("Selecione a primeira imagem")
+    const [imgR, setImgR] = useState([]);
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [4, 3],
+            aspect: [9, 16],
             quality: 1,
             allowsMultipleSelection: true
         })
-
+        if (imageList.length < 4) {
         setImageList(imageList => [...imageList, result])
+        } else {
+            alert("Você já selecionou 4 imagens")
+        }
     }
+
+    function removerItem (imgr) {
+        setImageList([
+            ...imageList.slice(0, imgr),
+            ...imageList.slice(imgr + 1, imageList.length)
+        ]);
+    }
+
     async function inserirPost() {
         try {
-            if (image) {
-                const response = await fetch(image);
+            if (imageList) {
+                const response = await fetch(imageList[0].uri);
                 const blob = await response.blob();
                 const base64Image = await convertBlobToBase64(blob);
 
@@ -71,14 +83,16 @@ export default function CadProd() {
         if (Platform.OS === "web") {
             return (imageList.map((image, index) => (
                 <div key={index}>
-                    <img src={image.uri} style={{ width: 200, height: 200 }}  />
+                    <img src={image.uri} style={{ width: 200, height: 200 }} onClick={()=>removerItem(index)}/>
                 </div>
             )));
         } else  {
             return (
                 imageList.map((image) => (
                     <View key={index}>
-                        <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />
+                        <TouchableOpacity onPress={() => removerItem(index)}>
+                            <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />
+                        </TouchableOpacity>
                     </View>
                 )) 
             );
@@ -89,6 +103,8 @@ export default function CadProd() {
         <View>
             <View>
                 <View style={styles.BodyH}>
+                    <Text>Cadastre produtos aqui</Text>
+                    <Text>Para remover uma imagem, clique nela.</Text>
                     <TextInput label="Titulo"
                         value={title}
                         onChangeText={setTitle}
@@ -112,7 +128,7 @@ export default function CadProd() {
                     <Button 
                     onPress={pickImage}
                     style={styles.ButtonH}
-                    >{textimage}</Button>
+                    >Selecione 4 imagens</Button>
                     <Button
                         onPress={inserirPost}
                         disabled={!title || !content}
