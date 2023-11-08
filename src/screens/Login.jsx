@@ -75,7 +75,7 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
         {/* <TouchableOpacity
           onPress={() => navigation.navigate("CadProd")}
-          style={styles.Touch}
+          style={styles.Touch}  
         >
           <Text>TESTE</Text>
         </TouchableOpacity> */}
