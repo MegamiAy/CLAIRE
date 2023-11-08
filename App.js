@@ -18,6 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
+        <Menu.Screen name="Recuperar" component={RecPass} />
         <Menu.Screen
           name="F*da-se"
           component={Start}
@@ -32,11 +33,16 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Menu.Screen name="Registro" component={Register} />
+        <Menu.Screen
+          name="Registro"
+          component={Register}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Menu.Screen name="Home" component={HomeSrc} />
         <Menu.Screen name="Sair" component={LogOut} />
         <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
-        <Menu.Screen name="Recuperar" component={RecPass} />
       </Menu.Navigator>
     </NavigationContainer>
   );

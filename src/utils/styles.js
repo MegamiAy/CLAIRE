@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
   ButtonLT: {
     width: "35%",
     height: 50,
-    marginBottom: 78,
+    marginBottom: 60,
     marginTop: 25,
     backgroundColor: "#fff",
     marginRight: 310,
@@ -166,6 +166,26 @@ export const styles = StyleSheet.create({
   },
 
   // REGISTER
+
+  titleR: {
+    fontWeight: "bold",
+    fontSize: 40,
+    marginRight: 142,
+  },
+
+  subTitleR: {
+    marginTop: 5,
+    marginRight: 210,
+  },
+
+  ButtonRT: {
+    width: "35%",
+    height: 50,
+    marginBottom: 5,
+    marginTop: 25,
+    backgroundColor: "#fff",
+    marginRight: 310,
+  },
 
   //Home
   containerH: {
