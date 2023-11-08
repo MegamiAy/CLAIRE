@@ -1,9 +1,11 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { Button, Paragraph, TextInput } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
+
+import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
@@ -35,8 +37,19 @@ export default function Register({ navigation }) {
 
   return (
     <View style={styles.FullBodyL}>
+      <Button
+        mode="contained"
+        style={styles.ButtonRT}
+        onPress={() => navigation.navigate("F*da-se")}
+        textColor="#000"
+      >
+        <FaArrowLeft />
+      </Button>
       <View style={styles.BodyL}>
-        <Paragraph>Faça seu cadastro: </Paragraph>
+        <Text style={styles.titleR}>Cadastro</Text>
+        <View style={styles.subTitleR}>
+          <Text style={styles.subTitleLR}>Bem-vindo(a)</Text>
+        </View>
         <TextInput
           label={"E-mail"}
           placeholder="Digite seu E-mail"
@@ -67,7 +80,11 @@ export default function Register({ navigation }) {
           style={styles.InputL}
           secureTextEntry={true}
         />
-        <Button style={styles.ButtonC} onPress={handleRegister}>
+        <Button
+          mode="contained"
+          style={styles.ButtonC}
+          onPress={handleRegister}
+        >
           Cadastrar
         </Button>
       </View>
