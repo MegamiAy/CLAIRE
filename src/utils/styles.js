@@ -217,7 +217,9 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+
   //SLIDESSSSS
+
   containerS: {
     flex: 1,
     paddingTop: 100,
@@ -241,7 +243,57 @@ export const styles = StyleSheet.create({
   b: {
     margin: 3,
     color: "gray",
-  }
+  },
+
+  //RECPASS
+
+  InputRP: {
+    width: "90%",
+    height: 50,
+    marginTop: 60,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    borderRadius: 7,
+  },
+
+  FullBodyRP: {
+    backgroundColor: "#fff",
+    // justifyContent: "center",
+    paddingTop: "5rem",
+    alignItems: "center",
+    height: "100%"
+  },
+
+  TitleRP: {
+    marginTop: 40,
+    fontWeight: "bold",
+  },
+
+  TitleRP2: {
+    fontWeight: "100",
+    marginTop: 7,
+    textAlign: "center",
+  },
+
+  LinhaRP: {
+    flexDirection: "row",
+    alignItems: "center",
+    // marginTop: 10,
+  },
+
+  SubTitleRP: {
+    marginTop: 20,
+  },
+
+  ButtonRP: {
+    width: "70%",
+    height: 50,
+    marginTop: 25,
+    marginBottom: 25,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+  },
 });
 
 export default styles;
