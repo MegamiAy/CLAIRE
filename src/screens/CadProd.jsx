@@ -15,7 +15,8 @@ export default function CadProd() {
     const [size, setSize] = useState("");
     const [collectionS, setCollection] = useState(null);
     const [imageList, setImageList] = useState([])
-    const [imgR, setImgR] = useState([]);
+    const [getImg, setGetImg] = useState(null)
+    const [getId, setGetId] = useState(null)
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -44,7 +45,6 @@ export default function CadProd() {
                 const response = await fetch(imageList[0].uri);
                 const blob = await response.blob();
                 const base64Image = await convertBlobToBase64(blob);
-
                 const payload = {
                     Title: title,
                     Content: content,
