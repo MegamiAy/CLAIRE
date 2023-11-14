@@ -7,6 +7,7 @@ import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase
 import * as ImagePicker from "expo-image-picker";
 import styles from "../utils/styles";
 import { storage } from "../config/firebase";
+import { Picker } from "@react-native-picker/picker";
 
 export default function CadProd() {
     const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ export default function CadProd() {
     const [price, setPrice] = useState("");
     const [size, setSize] = useState("");
     const [collectionS, setCollection] = useState(null);
-    const [imageList, setImageList] = useState([])
+    const [imageList, setImageList] = useState([]);
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -39,6 +40,7 @@ export default function CadProd() {
 
     async function inserirPost() {
         try {
+            if (title !== "" && content !== "" && price !== "" && size !== 0 && collectionS !== 0 && imageList.length === 4) {
           const docRef = await addDoc(collection(db, "Post"), {
             title: title,
             content: content,
@@ -62,19 +64,22 @@ export default function CadProd() {
             title: title,
             content: content,
             price: price,
+            size: size,
+            collection: collectionS,
             img1: imageUrls[0] || "",
             img2: imageUrls[1] || "",
             img3: imageUrls[2] || "",
             img4: imageUrls[3] || "",
-          });
-      
+          })
           console.log("Produto cadastrado com sucesso!");
-        } catch (error) {
-          console.error("Erro ao cadastrar produto:", error);
+        } else {
+            alert("Preencha todos os campos e selecione 4 imagens")
+        };
+        } catch {(error) => {
+            console.log(error);
         }
       }
-
-    const postRef = collection(db, "Post");
+    } 
 
     const ImageComponent = () => {
         if (Platform.OS === "web") {
@@ -119,6 +124,27 @@ export default function CadProd() {
                         onChangeText={setPrice}
                         style={styles.InputL}
                     />
+                    <Picker
+                    selectedValue={size}
+                    onValueChange={(itemValue) =>
+                        setSize(itemValue)
+                    }>
+                        <Picker.Item label="Selecione o tamanho" value="0" />
+                        <Picker.Item label="P" value="P" />
+                        <Picker.Item label="M" value="M" />
+                        <Picker.Item label="G" value="G" />
+                        <Picker.Item label="GG" value="GG" />
+                    </Picker>
+                    <Picker
+                    selectedValue={collectionS}
+                    onValueChange={(itemValue) =>
+                        setCollection(itemValue)
+                    }>
+                        <Picker.Item label="Selecione a coleção" value="0" />
+                        <Picker.Item label="Cosmopolitan" value="Cosmopolitan" />
+                        <Picker.Item label="Essentials" value="Essentials" />
+                        <Picker.Item label="Blend" value="Blend" />
+                    </Picker>
 
                     {imageList && <ImageComponent /> }
 
