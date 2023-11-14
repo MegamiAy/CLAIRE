@@ -62,7 +62,7 @@ export default function CadProd() {
             title: title,
             content: content,
             price: price,
-            img1: imageUrls[0] || "", // Substitua pelos nomes reais dos campos de imagem
+            img1: imageUrls[0] || "",
             img2: imageUrls[1] || "",
             img3: imageUrls[2] || "",
             img4: imageUrls[3] || "",
@@ -128,7 +128,6 @@ export default function CadProd() {
                     >Selecione 4 imagens</Button>
                     <Button
                         onPress={inserirPost}
-                        disabled={!title || !content}
                         style={styles.ButtonH}
                     >Postar</Button>
                 </View>
