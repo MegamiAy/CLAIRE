@@ -1,9 +1,9 @@
 import { Platform, View, Image, TouchableOpacityBase, TouchableOpacity } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, query, serverTimestamp, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../config/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import styles from "../utils/styles";
 import { storage } from "../config/firebase";
@@ -15,8 +15,6 @@ export default function CadProd() {
     const [size, setSize] = useState("");
     const [collectionS, setCollection] = useState(null);
     const [imageList, setImageList] = useState([])
-    const [getImg, setGetImg] = useState(null)
-    const [getId, setGetId] = useState(null)
 
     const pickImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -41,41 +39,40 @@ export default function CadProd() {
 
     async function inserirPost() {
         try {
-            if (imageList) {
-                const response = await fetch(imageList[0].uri);
-                const blob = await response.blob();
-                const base64Image = await convertBlobToBase64(blob);
-                const payload = {
-                    Title: title,
-                    Content: content,
-                    Image: base64Image,
-                };
-                const post = await addDoc(postRef, payload);
-                console.log(post);
-            } else {
-                const payload = {
-                    Title: title,
-                    Content: content,
-                };
-                const post = await addDoc(postRef, payload);
-                console.log(post);
-            }
+          const docRef = await addDoc(collection(db, "Post"), {
+            title: title,
+            content: content,
+            price: price,
+            timestamp: serverTimestamp(),
+          });
+      
+          const postId = docRef.id;
+      
+          const imageUrls = await Promise.all(
+            imageList.map(async (image, index) => {
+              const response = await fetch(image.uri);
+              const blob = await response.blob();
+              const storageRef = ref(storage, `produtos/${postId}/img${index + 1}`);
+              await uploadBytesResumable(storageRef, blob);
+              return getDownloadURL(storageRef);
+            })
+          );
+      
+          await setDoc(doc(db, "Post", postId), {
+            title: title,
+            content: content,
+            price: price,
+            img1: imageUrls[0] || "", // Substitua pelos nomes reais dos campos de imagem
+            img2: imageUrls[1] || "",
+            img3: imageUrls[2] || "",
+            img4: imageUrls[3] || "",
+          });
+      
+          console.log("Produto cadastrado com sucesso!");
         } catch (error) {
-            console.log(error);
-            console.error("Error uploading image: ", error);
+          console.error("Erro ao cadastrar produto:", error);
         }
-    }
-
-    const convertBlobToBase64 = (blob) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                resolve(reader.result);
-            };
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-        });
-    };
+      }
 
     const postRef = collection(db, "Post");
 
@@ -137,5 +134,4 @@ export default function CadProd() {
                 </View>
             </View>
         </View>
-    );
-}
+    )};
