@@ -72,6 +72,13 @@ export default function CadProd() {
             img4: imageUrls[3] || "",
           })
           console.log("Produto cadastrado com sucesso!");
+          setCollection(null);
+          setContent("");
+          setPrice("");
+          setSize("");
+          setTitle("");
+          setImageList([]);
+          alert("Produto cadastrado com sucesso!");         
         } else {
             alert("Preencha todos os campos e selecione 4 imagens")
         };
@@ -133,7 +140,7 @@ export default function CadProd() {
                         <Picker.Item label="P" value="P" />
                         <Picker.Item label="M" value="M" />
                         <Picker.Item label="G" value="G" />
-                        <Picker.Item label="GG" value="GG" />
+                        <Picker.Item label="GG" value="GG" />   
                     </Picker>
                     <Picker
                     selectedValue={collectionS}
