@@ -225,7 +225,7 @@ export const styles = StyleSheet.create({
     paddingTop: 1,
   },
   wrap: {
-    width: WIDTH,
+    width: 700,
     height: HEIGHT * 0.25,
     overflow: "hidden",
   },
