@@ -4,9 +4,9 @@ import { View, Image, Text } from "react-native";
 import { Button, Paragraph, TextInput } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { FaArrowLeft } from 'react-icons/fa';
+import { db } from "../config/firebase";
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
@@ -16,25 +16,46 @@ export default function Register({ navigation }) {
 
   async function handleRegister() {
     if (pass === conf) {
-      createUserWithEmailAndPassword(auth, email, pass, conf)
-        .then((userCredential) => {
-          alert("Usuário criado com sucesso!");
-          navigation.navigate("Login");
-        })
-        .catch((error) => {
-          alert("Falha ao criar usuário: " + error);
+      try {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            pass
+          );
+          const uid = userCredential.user.uid;
+          let docusername = username.toLowerCase();
+          const userDocRef = doc(db, "users", docusername);
+          
+          const docSnap = await getDoc(userDocRef);
+          if (docSnap.exists()){
+            docusername = `${docusername}_${uid.slice(0, 8)}`
+          }
 
+          const newUserDocRef = doc(db, "users", docusername);
+          
+
+          await setDoc(newUserDocRef, {
+            username: username,
+            email: email,
+            uid: uid,
+          });
+
+          alert("Usuário registrado com sucesso!")
+          navigation.navigate("Login")
+          } catch (error) {
+            alert("Ocorreu um erro ao registrar o usuário.");
+        } 
           const errorCode = error.code;
           if (errorCode === "auth/email-already-in-use") {
-            console.log("Email já está em uso!");
+            alert("Email já está em uso!");
           } else if (errorCode === "auth/invalid-email") {
-            console.log("Email inválido!");
+            alert("Email inválido!"); 
           } else if (errorCode === "auth/weak-password") {
-            console.log("Senha fraca!");
+            alert("Senha fraca!");
           }
-        });
+        };
     }
-  }
+  
 
   return (
     <View style={styles.FullBodyL}>
@@ -84,11 +105,10 @@ export default function Register({ navigation }) {
         <Button
           mode="contained"
           style={styles.ButtonC}
-          onPress={handleRegister}
+          onPress={handleRegister }
         >
           Cadastrar
         </Button>
       </View>
     </View>
-  );
-}
+  )};
