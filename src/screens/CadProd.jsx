@@ -8,13 +8,27 @@ import {
   ScrollView,
 } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  query,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../config/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
 import * as ImagePicker from "expo-image-picker";
 import styles from "../utils/styles";
 import { storage } from "../config/firebase";
+import { Picker } from "@react-native-picker/picker";
+import { ColorSpace } from "react-native-reanimated";
 
 export default function CadProd() {
   const [title, setTitle] = useState("");
@@ -23,8 +37,6 @@ export default function CadProd() {
   const [size, setSize] = useState("");
   const [collectionS, setCollection] = useState(null);
   const [imageList, setImageList] = useState([]);
-  const [getImg, setGetImg] = useState(null);
-  const [getId, setGetId] = useState(null);
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -74,18 +86,59 @@ export default function CadProd() {
     }
   }
 
-  const convertBlobToBase64 = (blob) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
+  async function inserirPost() {
+    try {
+      if (
+        title !== "" &&
+        content !== "" &&
+        price !== "" &&
+        size !== 0 &&
+        collectionS !== 0 &&
+        imageList.length === 4
+      ) {
+        const docRef = await addDoc(collection(db, "Post"), {
+          title: title,
+          content: content,
+          price: price,
+          timestamp: serverTimestamp(),
+        });
 
-  const postRef = collection(db, "Post");
+        const postId = docRef.id;
+
+        const imageUrls = await Promise.all(
+          imageList.map(async (image, index) => {
+            const response = await fetch(image.uri);
+            const blob = await response.blob();
+            const storageRef = ref(
+              storage,
+              `produtos/${postId}/img${index + 1}`
+            );
+            await uploadBytesResumable(storageRef, blob);
+            return getDownloadURL(storageRef);
+          })
+        );
+
+        await setDoc(doc(db, "Post", postId), {
+          title: title,
+          content: content,
+          price: price,
+          size: size,
+          collection: collectionS,
+          img1: imageUrls[0] || "",
+          img2: imageUrls[1] || "",
+          img3: imageUrls[2] || "",
+          img4: imageUrls[3] || "",
+        });
+        console.log("Produto cadastrado com sucesso!");
+      } else {
+        alert("Preencha todos os campos e selecione 4 imagens");
+      }
+    } catch {
+      (error) => {
+        console.log(error);
+      };
+    }
+  }
 
   const ImageComponent = () => {
     if (Platform.OS === "web") {
@@ -93,7 +146,7 @@ export default function CadProd() {
         <div key={index}>
           <img
             src={image.uri}
-            style={{ width: 200, height: 200, margin: 20 }}
+            style={{ width: 200, height: 200, margin: 15 }}
             onClick={() => removerItem(index)}
           />
         </div>
@@ -114,13 +167,11 @@ export default function CadProd() {
 
   return (
     <SafeAreaView style={styles.FullBodyCP}>
-      <ScrollView >
+      <ScrollView>
         <View style={styles.BodyCP}>
           <View style={styles.BoxCP}>
-            <Text style={styles.TitleCP}>Cadastro de Produtos</Text>
-            <Text style={styles.subTitleCP}>
-              Para remover uma imagem, clique nela.
-            </Text>
+            <Text style={styles.TitleCP}>Cadastre produtos aqui</Text>
+            <Text style={styles.subTitleCP}>Para remover uma imagem, clique nela.</Text>
             <TextInput
               label="Titulo"
               value={title}
@@ -139,6 +190,28 @@ export default function CadProd() {
               onChangeText={setPrice}
               style={styles.InputCP}
             />
+            <Picker
+              style={styles.PikaCP}
+              selectedValue={size}
+              onValueChange={(itemValue) => setSize(itemValue)}
+            >
+              <Picker.Item color="#000" label="Selecione o tamanho" value="0" />
+              <Picker.Item label="P" value="P" />
+              <Picker.Item label="M" value="M" />
+              <Picker.Item label="G" value="G" />
+              <Picker.Item label="GG" value="GG" />
+            </Picker>
+            <Picker
+
+              style={styles.PikaCP}
+              selectedValue={collectionS}
+              onValueChange={(itemValue) => setCollection(itemValue)}
+            >
+              <Picker.Item label="Selecione a coleção" value="0" />
+              <Picker.Item label="Cosmopolitan" value="Cosmopolitan" />
+              <Picker.Item label="Essentials" value="Essentials" />
+              <Picker.Item label="Blend" value="Blend" />
+            </Picker>
 
             {imageList && <ImageComponent />}
 
@@ -151,7 +224,6 @@ export default function CadProd() {
             </Button>
             <Button
               onPress={inserirPost}
-              //   disabled={!title || !content}
               style={styles.ButtonCP}
               mode="contained"
             >

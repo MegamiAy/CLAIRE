@@ -82,12 +82,12 @@ export default function Login({ navigation }) {
         <Button onPress={handleLogin} mode="contained" style={styles.ButtonL}>
           Logar
         </Button>
-        {/* <TouchableOpacity
+        <TouchableOpacity
           onPress={() => navigation.navigate("Registro")}
           style={styles.Touch}
         >
           <Text>Cadastre-se</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     </View>
   );

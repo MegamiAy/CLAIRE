@@ -346,6 +346,11 @@ export const styles = StyleSheet.create({
     // paddingTop: "8rem",
   },
 
+  PikaCP: {
+    height: 40,
+    width: "85%",
+    marginTop: 12,
+  },
 });
 
 export default styles;
