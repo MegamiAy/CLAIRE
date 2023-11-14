@@ -222,10 +222,10 @@ export const styles = StyleSheet.create({
 
   containerS: {
     flex: 1,
-    paddingTop: 100,
+    paddingTop: 1,
   },
   wrap: {
-    width: WIDTH,
+    width: 700,
     height: HEIGHT * 0.25,
     overflow: "hidden",
   },
