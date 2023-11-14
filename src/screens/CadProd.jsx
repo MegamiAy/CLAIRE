@@ -130,7 +130,7 @@ export default function CadProd() {
           img4: imageUrls[3] || "",
         });
         alert("Produto cadastrado com sucesso!");
-        setCollection(null);
+        setCollection("");
         setContent("");
         setPrice("");
         setSize("");

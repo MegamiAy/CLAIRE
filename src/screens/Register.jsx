@@ -4,13 +4,14 @@ import { View, Image, Text } from "react-native";
 import { Button, Paragraph, TextInput } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [conf, setConf] = useState("");
 
   async function handleRegister() {
@@ -60,8 +61,8 @@ export default function Register({ navigation }) {
         <TextInput
           label={"Nome de Usuário"}
           placeholder="Digite o nome de usuário"
-          value={user}
-          onChangeText={setUser}
+          value={username}
+          onChangeText={setUsername}
           style={styles.InputL}
         />
         <TextInput
