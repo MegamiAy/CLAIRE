@@ -135,7 +135,7 @@ export const styles = StyleSheet.create({
   },
 
   subTitle: {
-    alignItems:  "flex-start",
+    alignItems: "flex-start",
     marginTop: 5,
     marginRight: 110,
   },
@@ -228,7 +228,6 @@ export const styles = StyleSheet.create({
     width: WIDTH,
     height: HEIGHT * 0.25,
     overflow: "hidden",
-
   },
   wrapB: {
     position: "absolute",
@@ -261,7 +260,7 @@ export const styles = StyleSheet.create({
     // justifyContent: "center",
     paddingTop: "5rem",
     alignItems: "center",
-    height: "100%"
+    height: "100%",
   },
 
   TitleRP: {
@@ -293,6 +292,64 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#000",
     borderRadius: 0,
+  },
+
+  //CADPROD
+
+  BodyCP: {
+    alignItems: "center",
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    marginTop: "5rem",
+  },
+
+  InputCP: {
+    width: "90%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    borderRadius: 7,
+  },
+
+  BoxCP: {
+    width: "100%",
+    alignItems: "center",
+  },
+
+  ButtonCP: {
+    width: "85%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+    color: "#fff",
+  },
+
+  TitleCP: {
+    fontSize: 30,
+    fontWeight: "100",
+  },
+
+  subTitleCP: {
+    marginBottom: 50,
+    fontWeight: "bold",
+    fontSize: 13,
+  },
+
+  FullBodyCP: {
+    height: "100%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    // paddingTop: "8rem",
+  },
+
+  PikaCP: {
+    height: 40,
+    width: "85%",
+    marginTop: 12,
   },
 });
 
