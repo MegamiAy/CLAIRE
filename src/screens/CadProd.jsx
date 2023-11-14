@@ -59,51 +59,6 @@ export default function CadProd() {
     ]);
   }
 
-<<<<<<< HEAD
-    async function inserirPost() {
-        try {
-            if (title !== "" && content !== "" && price !== "" && size !== 0 && collectionS !== 0 && imageList.length === 4) {
-          const docRef = await addDoc(collection(db, "Post"), {
-            title: title,
-            content: content,
-            price: price,
-            timestamp: serverTimestamp(),
-          });
-      
-          const postId = docRef.id;
-      
-          const imageUrls = await Promise.all(
-            imageList.map(async (image, index) => {
-              const response = await fetch(image.uri);
-              const blob = await response.blob();
-              const storageRef = ref(storage, `produtos/${postId}/img${index + 1}`);
-              await uploadBytesResumable(storageRef, blob);
-              return getDownloadURL(storageRef);
-            })
-          );
-      
-          await setDoc(doc(db, "Post", postId), {
-            title: title,
-            content: content,
-            price: price,
-            size: size,
-            collection: collectionS,
-            img1: imageUrls[0] || "",
-            img2: imageUrls[1] || "",
-            img3: imageUrls[2] || "",
-            img4: imageUrls[3] || "",
-          })
-          console.log("Produto cadastrado com sucesso!");
-          setCollection(null);
-          setContent("");
-          setPrice("");
-          setSize("");
-          setTitle("");
-          setImageList([]);
-          alert("Produto cadastrado com sucesso!");         
-        } else {
-            alert("Preencha todos os campos e selecione 4 imagens")
-=======
   async function inserirPost() {
     try {
       if (imageList) {
@@ -114,7 +69,6 @@ export default function CadProd() {
           Title: title,
           Content: content,
           Image: base64Image,
->>>>>>> 43093df464378e210bd1a41e28bca6caf9c2f623
         };
         const post = await addDoc(postRef, payload);
         console.log(post);
@@ -175,7 +129,13 @@ export default function CadProd() {
           img3: imageUrls[2] || "",
           img4: imageUrls[3] || "",
         });
-        console.log("Produto cadastrado com sucesso!");
+        alert("Produto cadastrado com sucesso!");
+        setCollection(null);
+        setContent("");
+        setPrice("");
+        setSize("");
+        setTitle("");
+        setImageList([]);
       } else {
         alert("Preencha todos os campos e selecione 4 imagens");
       }
