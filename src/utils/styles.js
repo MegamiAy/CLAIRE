@@ -351,6 +351,51 @@ export const styles = StyleSheet.create({
     width: "85%",
     marginTop: 12,
   },
+
+  //Tela de produto
+
+  BoxP: {
+    width: "100%",
+    marginTop: 25,
+    marginBottom: 15,
+    height: "95%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  TitleP: {
+    fontWeight: "500",
+    fontSize: 20,
+    marginBottom: 10,
+  },
+
+  ButtonP: {
+    width: "100%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+    color: "#fff",
+  },
+
+  SubBoxP: {
+    // backgroundColor: "#f5f5dc",
+    padding: 10,
+    // borderWidth: 5,
+  },
+
+  shadowProp: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
+  },
 });
 
 export default styles;

@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image, SafeAreaView, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import styles from "../utils/styles";
+import { Button } from "react-native-paper";
 
 export default function Products({ navigation }) {
   const [products, setProducts] = useState([]);
@@ -51,34 +60,35 @@ export default function Products({ navigation }) {
   };
 
   const renderProductItem = ({ item }) => (
-    <SafeAreaView style={styles.FullBodyCP}>
-        <ScrollView>
-            <View style={styles.BodyCP}>
-                <TouchableOpacity onPress={() => handleProductPress(item)}>
-                    <View style={styles.BoxCP}>
-                        <Text style={styles.TitleCP}>{item.title}</Text>
-                        {item.imgUrls.map((imgUrl) => (
-                        <Image
-                            key={imgUrl}
-                            source={{ uri: imgUrl }}
-                            style={{ width: 200, height: 200 }}
-                        />
-                        ))}
-                        <Text>Preço: {item.price}</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-    </SafeAreaView>
+    <TouchableOpacity onPress={() => handleProductPress(item)} style={ styles.BoxP }>
+      <View style={[styles.SubBoxP, styles.shadowProp]}>
+        {item.imgUrls.map((imgUrl) => (
+          <Image
+            key={imgUrl}
+            source={{ uri: imgUrl }}
+            style={{ width: 200, height: 250 }}
+          />
+        ))}
+        <Text style={styles.TitleP}>{item.title}</Text>
+        <Text>Preço: {item.price}</Text>
+        <Button onPress={"#"} style={styles.ButtonP} mode="contained">
+          Adicionar ao carrinho
+        </Button>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
-    <View>
-      <FlatList
-        data={products}
-        keyExtractor={(item) => item.id}
-        renderItem={renderProductItem}
-      />
-    </View>
+    <SafeAreaView style={styles.FullBodyCP}>
+      <ScrollView>
+        <View>
+          <FlatList
+            data={products}
+            keyExtractor={(item) => item.id}
+            renderItem={renderProductItem}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
