@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image, SafeAreaView, ScrollView } from "react-native";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import styles from "../utils/styles";
@@ -18,8 +18,9 @@ export default function Products({ navigation }) {
 
         // Obtenha os URLs das imagens usando os campos img1, img2, img3, img4
         const imgUrls = await Promise.all(
-          ["img1", "img2", "img3", "img4"].map(async (imgField) => {
+          ["img1"].map(async (imgField) => {
             const imgUrl = data[imgField];
+            console.log(`URL da imagem (${imgField}):`, imgUrl);
             if (imgUrl) {
               // Você pode adicionar lógica adicional para garantir que a URL da imagem seja válida
               return imgUrl;
@@ -33,6 +34,7 @@ export default function Products({ navigation }) {
           title: data.title,
           content: data.content,
           price: data.price,
+          size: data.size,
           imgUrls: imgUrls.filter((url) => url !== null),
         });
       });
@@ -49,18 +51,25 @@ export default function Products({ navigation }) {
   };
 
   const renderProductItem = ({ item }) => (
-    <TouchableOpacity onPress={() => handleProductPress(item)}>
-      <View>
-        <Text>{item.title}</Text>
-        {item.imgUrls.map((imgUrl) => (
-          <Image
-            key={imgUrl}
-            source={{ uri: imgUrl }}
-          />
-        ))}
-        <Text>{item.price}</Text>
-      </View>
-    </TouchableOpacity>
+    <SafeAreaView style={styles.FullBodyCP}>
+        <ScrollView>
+            <View style={styles.BodyCP}>
+                <TouchableOpacity onPress={() => handleProductPress(item)}>
+                    <View style={styles.BoxCP}>
+                        <Text style={styles.TitleCP}>{item.title}</Text>
+                        {item.imgUrls.map((imgUrl) => (
+                        <Image
+                            key={imgUrl}
+                            source={{ uri: imgUrl }}
+                            style={{ width: 200, height: 200 }}
+                        />
+                        ))}
+                        <Text>Preço: {item.price}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
+    </SafeAreaView>
   );
 
   return (
