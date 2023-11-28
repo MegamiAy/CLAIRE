@@ -10,25 +10,25 @@ import User from "./screens/User";
 import Cart from "./screens/Cart";
 import Start from "./screens/Start";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
 
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Start">
+        <Stack.Screen 
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Recuperar"
           component={RecPass}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="Start"
           component={Start}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
           options={{ headerShown: false }}
         />
         <Stack.Screen

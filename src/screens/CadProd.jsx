@@ -198,10 +198,10 @@ export default function CadProd() {
             />
             <Picker
               style={styles.PikaCP}
-              selectedValue={size}
+              selectedValue={size || ""}
               onValueChange={(itemValue) => setSize(itemValue)}
             >
-              <Picker.Item color="#000" label="Selecione o tamanho" value="0" />
+              <Picker.Item color="#000" label="Selecione o tamanho" value="0"/>
               <Picker.Item label="P" value="P" />
               <Picker.Item label="M" value="M" />
               <Picker.Item label="G" value="G" />
@@ -210,7 +210,7 @@ export default function CadProd() {
             <Picker
 
               style={styles.PikaCP}
-              selectedValue={collectionS}
+              selectedValue={collectionS || ""}
               onValueChange={(itemValue) => setCollection(itemValue)}
             >
               <Picker.Item label="Selecione a coleção" value="0" />
