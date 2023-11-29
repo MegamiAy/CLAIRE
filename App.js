@@ -12,6 +12,7 @@ import CadProd from "./src/screens/CadProd";
 import RecPass from "./src/screens/RecPass";
 import Start from "./src/screens/Start";
 import Products from "./src/screens/Products";
+import Cart from "./src/screens/Cart";
 
 const Menu = createDrawerNavigator();
 
@@ -41,10 +42,26 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Menu.Screen name="Home" component={HomeSrc} />
-        <Menu.Screen name="Lista de produtos" component={Products} />
-        <Menu.Screen name="Sair" component={LogOut} />
-        <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
+        <Menu.Screen 
+        name="Home" 
+        component={HomeSrc} 
+        />
+        <Menu.Screen 
+        name="Lista de produtos" 
+        component={Products} 
+        />
+        <Menu.Screen 
+        name="Carrinho" 
+        component={Cart} 
+        />
+        <Menu.Screen 
+        name="Cadastrar Produtos" 
+        component={CadProd} 
+        />
+        <Menu.Screen 
+        name="Sair" 
+        component={LogOut} 
+        />
       </Menu.Navigator>
     </NavigationContainer>
   );
