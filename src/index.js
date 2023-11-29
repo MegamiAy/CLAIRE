@@ -9,6 +9,7 @@ import RecPass from "./screens/RecPass";
 import User from "./screens/User";
 import Cart from "./screens/Cart";
 import Start from "./screens/Start";
+import Contact from "./screens/Contact";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ export default function RootNavigation() {
                 <Stack.Screen name="Recuperar" component={RecPass} options={{headerShown:false}}/>
                 <Stack.Screen name="Usuário" component={User} options={{headerShown:false}}/>
                 <Stack.Screen name="Carrinho" component={Cart} options={{headerShown:false}}/>
+                <Stack.Screen name="Contato" component={Contact} options={{headerShown:false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
