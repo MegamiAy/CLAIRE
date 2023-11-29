@@ -57,6 +57,11 @@ export default function RootNavigation() {
           component={Cart}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Contato"
+          component={Contact}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

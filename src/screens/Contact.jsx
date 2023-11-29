@@ -13,34 +13,44 @@ export default function Contact({ navigation }) {
       <Button
         mode="contained"
         style={styles.ButtonLT}
-        onPress={() => navigation.navigate("Contato")}
+        onPress={() => navigation.navigate("Home")}
         textColor= "#000"
       >
        <FaArrowLeft />
       </Button>
-      <Text style={styles.titleLR}>Contato</Text>
-      <View style={styles.subTitle}>
-        <Text style={styles.subTitleLR}>
+      <Text style={styles.titleC}>Contato</Text>
+      <View style={styles.subTitleC}>
+        <Text style={styles.subTitleCr2}>
           Contate Claire Juliani para qualquer dúvida
         </Text>
       </View>
 
-      <View style={styles.BodyL}>
-        <View style={styles.BodyL}>
-          <Text style={styles.titleLR}>Email:</Text>
-          <Text style={styles.subTitleLR}>
-             claire@gmail.com
-          </Text>
+      <View style={[styles.BodyC, {width: '100%'}]}>
+        <View style={[styles.BodyCr, styles.BodyC, {width: '100%'}]}>
 
-          <Text style={styles.titleLR}>Telefone:</Text>
-          <Text style={styles.subTitleLR}>
-             (11) 99999-9999
-          </Text>
+          <View>
+            <Text style={styles.titleCr}>Email:</Text>
+            <Text style={styles.subTitleCr}>
+              claire@gmail.com
+            </Text>
 
-          <Text style={styles.titleLR}>Endereço:</Text>
-          <Text style={styles.subTitleLR}>
-             Rua xxxx, X - xxxxx - SC
-          </Text>
+            <Text style={styles.titleCr}>Telefone:</Text>
+            <Text style={styles.subTitleCr}>
+              (11) 99999-9999
+            </Text>
+
+            <Text style={styles.titleCr}>Endereço:</Text>
+            <Text style={styles.subTitleCr}>
+              Rua xxxx, X - xxxxx - SC
+            </Text>
+          </View>
+          <View>
+            <Image
+              style={styles.ImageC}
+              source={require("../img/contato.jpg")}
+            />
+          </View>
+
       </View>
     </View>
     </View>
