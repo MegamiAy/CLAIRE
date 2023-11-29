@@ -75,19 +75,19 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
         {/* <TouchableOpacity
           onPress={() => navigation.navigate("CadProd")}
-          style={styles.Touch}
+          style={styles.Touch}  
         >
           <Text>TESTE</Text>
         </TouchableOpacity> */}
         <Button onPress={handleLogin} mode="contained" style={styles.ButtonL}>
           Logar
         </Button>
-        {/* <TouchableOpacity
+        <TouchableOpacity
           onPress={() => navigation.navigate("Registro")}
           style={styles.Touch}
         >
           <Text>Cadastre-se</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     </View>
   );

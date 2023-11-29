@@ -88,7 +88,7 @@ export const styles = StyleSheet.create({
   ButtonLT: {
     width: "35%",
     height: 50,
-    marginBottom: 78,
+    marginBottom: 60,
     marginTop: 25,
     backgroundColor: "#fff",
     marginRight: 310,
@@ -135,7 +135,7 @@ export const styles = StyleSheet.create({
   },
 
   subTitle: {
-    alignItems:  "flex-start",
+    alignItems: "flex-start",
     marginTop: 5,
     marginRight: 110,
   },
@@ -170,6 +170,26 @@ export const styles = StyleSheet.create({
 
   // REGISTER
 
+  titleR: {
+    fontWeight: "bold",
+    fontSize: 40,
+    marginRight: 142,
+  },
+
+  subTitleR: {
+    marginTop: 5,
+    marginRight: 210,
+  },
+
+  ButtonRT: {
+    width: "35%",
+    height: 50,
+    marginBottom: 5,
+    marginTop: 25,
+    backgroundColor: "#fff",
+    marginRight: 310,
+  },
+
   //Home
   containerH: {
     alignItems: "center",
@@ -197,16 +217,17 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+
   //SLIDESSSSS
+
   containerS: {
     flex: 1,
-    paddingTop: 100,
+    paddingTop: 1,
   },
   wrap: {
-    width: WIDTH,
+    width: 700,
     height: HEIGHT * 0.25,
     overflow: "hidden",
-
   },
   wrapB: {
     position: "absolute",
@@ -221,7 +242,160 @@ export const styles = StyleSheet.create({
   b: {
     margin: 3,
     color: "gray",
-  }
+  },
+
+  //RECPASS
+
+  InputRP: {
+    width: "90%",
+    height: 50,
+    marginTop: 60,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    borderRadius: 7,
+  },
+
+  FullBodyRP: {
+    backgroundColor: "#fff",
+    // justifyContent: "center",
+    paddingTop: "5rem",
+    alignItems: "center",
+    height: "100%",
+  },
+
+  TitleRP: {
+    marginTop: 40,
+    fontWeight: "bold",
+  },
+
+  TitleRP2: {
+    fontWeight: "100",
+    marginTop: 7,
+    textAlign: "center",
+  },
+
+  LinhaRP: {
+    flexDirection: "row",
+    alignItems: "center",
+    // marginTop: 10,
+  },
+
+  SubTitleRP: {
+    marginTop: 20,
+  },
+
+  ButtonRP: {
+    width: "70%",
+    height: 50,
+    marginTop: 25,
+    marginBottom: 25,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+  },
+
+  //CADPROD
+
+  BodyCP: {
+    alignItems: "center",
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    marginTop: "5rem",
+  },
+
+  InputCP: {
+    width: "90%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    borderRadius: 7,
+  },
+
+  BoxCP: {
+    width: "100%",
+    alignItems: "center",
+  },
+
+  ButtonCP: {
+    width: "85%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+    color: "#fff",
+  },
+
+  TitleCP: {
+    fontSize: 30,
+    fontWeight: "100",
+  },
+
+  subTitleCP: {
+    marginBottom: 50,
+    fontWeight: "bold",
+    fontSize: 13,
+  },
+
+  FullBodyCP: {
+    height: "100%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    // paddingTop: "8rem",
+  },
+
+  PikaCP: {
+    height: 40,
+    width: "85%",
+    marginTop: 12,
+  },
+
+  //Tela de produto
+
+  BoxP: {
+    width: "100%",
+    marginTop: 25,
+    marginBottom: 15,
+    height: "95%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  TitleP: {
+    fontWeight: "500",
+    fontSize: 20,
+    marginBottom: 10,
+  },
+
+  ButtonP: {
+    width: "100%",
+    height: 50,
+    marginTop: 20,
+    justifyContent: "center",
+    backgroundColor: "#000",
+    borderRadius: 0,
+    color: "#fff",
+  },
+
+  SubBoxP: {
+    // backgroundColor: "#f5f5dc",
+    padding: 10,
+    // borderWidth: 5,
+  },
+
+  shadowProp: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
+  },
 });
 
 export default styles;

@@ -1,42 +1,77 @@
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useState } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { Button, Paragraph, TextInput } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { FaArrowLeft } from 'react-icons/fa';
+import { db } from "../config/firebase";
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [conf, setConf] = useState("");
 
   async function handleRegister() {
     if (pass === conf) {
-      createUserWithEmailAndPassword(auth, email, pass, conf)
-        .then((userCredential) => {
-          alert("Usuário criado com sucesso!");
-          navigation.navigate("Login");
-        })
-        .catch((error) => {
-          alert("Falha ao criar usuário: " + error);
+      try {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            pass
+          );
+          const uid = userCredential.user.uid;
+          let docusername = username.toLowerCase();
+          const userDocRef = doc(db, "users", docusername);
+          
+          const docSnap = await getDoc(userDocRef);
+          if (docSnap.exists()){
+            docusername = `${docusername}_${uid.slice(0, 8)}`
+          }
 
+          const newUserDocRef = doc(db, "users", docusername);
+          
+
+          await setDoc(newUserDocRef, {
+            username: username,
+            email: email,
+            uid: uid,
+          });
+
+          alert("Usuário registrado com sucesso!")
+          navigation.navigate("Login")
+          } catch (error) {
+            alert("Ocorreu um erro ao registrar o usuário.");
+        } 
           const errorCode = error.code;
           if (errorCode === "auth/email-already-in-use") {
-            console.log("Email já está em uso!");
+            alert("Email já está em uso!");
           } else if (errorCode === "auth/invalid-email") {
-            console.log("Email inválido!");
+            alert("Email inválido!"); 
           } else if (errorCode === "auth/weak-password") {
-            console.log("Senha fraca!");
+            alert("Senha fraca!");
           }
-        });
+        };
     }
-  }
+  
 
   return (
     <View style={styles.FullBodyL}>
+      <Button
+        mode="contained"
+        style={styles.ButtonRT}
+        onPress={() => navigation.navigate("F*da-se")}
+        textColor="#000"
+      >
+        <FaArrowLeft />
+      </Button>
       <View style={styles.BodyL}>
-        <Paragraph>Faça seu cadastro: </Paragraph>
+        <Text style={styles.titleR}>Cadastro</Text>
+        <View style={styles.subTitleR}>
+          <Text style={styles.subTitleLR}>Bem-vindo(a)</Text>
+        </View>
         <TextInput
           label={"E-mail"}
           placeholder="Digite seu E-mail"
@@ -47,8 +82,8 @@ export default function Register({ navigation }) {
         <TextInput
           label={"Nome de Usuário"}
           placeholder="Digite o nome de usuário"
-          value={user}
-          onChangeText={setUser}
+          value={username}
+          onChangeText={setUsername}
           style={styles.InputL}
         />
         <TextInput
@@ -67,10 +102,13 @@ export default function Register({ navigation }) {
           style={styles.InputL}
           secureTextEntry={true}
         />
-        <Button style={styles.ButtonC} onPress={handleRegister}>
+        <Button
+          mode="contained"
+          style={styles.ButtonC}
+          onPress={handleRegister }
+        >
           Cadastrar
         </Button>
       </View>
     </View>
-  );
-}
+  )};
