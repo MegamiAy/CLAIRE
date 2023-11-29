@@ -11,13 +11,18 @@ import Cart from "./screens/Cart";
 import Start from "./screens/Start";
 import Contact from "./screens/Contact";
 
-const Stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
-        <Stack.Screen 
+        <Stack.Screen
+          name="Start"
+          component={Start}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="Login"
           component={Login}
           options={{ headerShown: false }}
@@ -25,11 +30,6 @@ export default function RootNavigation() {
         <Stack.Screen
           name="Recuperar"
           component={RecPass}
-          options={{ headerShown: false }}
-          />
-        <Stack.Screen
-          name="Start"
-          component={Start}
           options={{ headerShown: false }}
         />
         <Stack.Screen

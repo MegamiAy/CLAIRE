@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Touchable, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
@@ -6,8 +6,9 @@ import styles from "../utils/styles";
 
 import { FaLock } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function RecPass() {
+export default function RecPass({navigation}) {
   const [email, setEmail] = useState("");
   const [alerta, setAlerta] = useState("");
   const auth = getAuth();
@@ -59,7 +60,7 @@ export default function RecPass() {
           />
         </View>
       </View>
-      <Text style={styles.SubTitleRP}>Criar nova conta</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Registro")} style={styles.SubTitleRP}><Text>Criar nova conta</Text></TouchableOpacity>
       <Text>{alerta}</Text>
     </View>
   );

@@ -13,6 +13,7 @@ import RecPass from "./src/screens/RecPass";
 import Start from "./src/screens/Start";
 import Products from "./src/screens/Products";
 import Contact from "./src/screens/Contact";
+import Cart from "./src/screens/Cart";
 
 const Menu = createDrawerNavigator();
 
@@ -42,17 +43,30 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Menu.Screen name="Home" component={HomeSrc} />
-        <Menu.Screen name="Lista de produtos" component={Products} />
-        <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
-        <Menu.Screen
-          name="Contato"
-          component={Contact}
-          options={{
-            headerShown: false,
-          }}
+        <Menu.Screen 
+        name="Home" 
+        component={HomeSrc} 
         />
-        <Menu.Screen name="Sair" component={LogOut} />
+        <Menu.Screen 
+        name="Lista de produtos" 
+        component={Products} 
+        />
+        <Menu.Screen 
+        name="Carrinho" 
+        component={Cart} 
+        />
+        <Menu.Screen 
+        name="Cadastrar Produtos" 
+        component={CadProd} 
+        />
+        <Menu.Screen 
+        name="Contato" 
+        component={Contact} 
+        />
+        <Menu.Screen 
+        name="Sair" 
+        component={LogOut} 
+        />
       </Menu.Navigator>
     </NavigationContainer>
   );
