@@ -66,6 +66,20 @@ export default function HomeSrc() {
           </View>
         </View>
       </SafeAreaView>
+
+      {/* ESTILIZEM OS TOUCH, COMO BOTÕES PARA PUXAR CADA COLEÇÃO */}
+      <TouchableOpacity>
+        BC
+      </TouchableOpacity>
+      <TouchableOpacity>
+        ES
+      </TouchableOpacity>
+      <TouchableOpacity>
+        CS
+      </TouchableOpacity>
+      <TouchableOpacity>
+        ALL
+      </TouchableOpacity>
     </View>
   );
 }
