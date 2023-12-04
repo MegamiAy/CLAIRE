@@ -21,14 +21,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
-        <Menu.Screen name="Recuperar" component={RecPass} />
         <Menu.Screen
-          name="F*da-se"
+          name="Início"
           component={Start}
           options={{
             headerShown: false,
           }}
         />
+        <Menu.Screen name="Recuperar" component={RecPass} />
         <Menu.Screen
           name="Login"
           component={Login}
