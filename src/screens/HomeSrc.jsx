@@ -71,19 +71,6 @@ export default function HomeSrc() {
         <Text style={{fontWeight: "bold", fontSize: 25, marginTop: 40, marginBottom: 25 }}>Coleções</Text>
 
       </View>
-      <SafeAreaView style={styles.Colection}>
-        <ScrollView>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
-          <View>
-            <Text>Produtos recomendados</Text>
-            <TouchableOpacity></TouchableOpacity>
-            <Text></Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-
       {/* ESTILIZEM OS TOUCH, COMO BOTÕES PARA PUXAR CADA COLEÇÃO */}
       <TouchableOpacity>
         BC
@@ -97,6 +84,21 @@ export default function HomeSrc() {
       <TouchableOpacity>
         ALL
       </TouchableOpacity>
+      <SafeAreaView style={styles.Colection}>
+        <ScrollView>
+          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
+          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
+          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
+          <View>
+            <Text>Produtos recomendados</Text>
+            <TouchableOpacity></TouchableOpacity>
+            <Text></Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+
+      
+      
     </View>
   );
 }

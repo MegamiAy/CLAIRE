@@ -21,11 +21,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
-<<<<<<< HEAD
-        <Menu.Screen name="Home" component={HomeSrc} />
-        <Menu.Screen name="Recuperar" component={RecPass} />
-=======
->>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
         <Menu.Screen
           name="Início"
           component={Start}
@@ -48,12 +43,6 @@ export default function App() {
             headerShown: false,
           }}
         />
-<<<<<<< HEAD
-
-        <Menu.Screen name="Lista de produtos" component={Products} />
-        <Menu.Screen name="Sair" component={LogOut} />
-        <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
-=======
         <Menu.Screen 
         name="Home" 
         component={HomeSrc} 
@@ -78,7 +67,6 @@ export default function App() {
         name="Sair" 
         component={LogOut} 
         />
->>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
       </Menu.Navigator>
     </NavigationContainer>
   );
