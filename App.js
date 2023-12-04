@@ -12,6 +12,8 @@ import CadProd from "./src/screens/CadProd";
 import RecPass from "./src/screens/RecPass";
 import Start from "./src/screens/Start";
 import Products from "./src/screens/Products";
+import Contact from "./src/screens/Contact";
+import Cart from "./src/screens/Cart";
 
 const Menu = createDrawerNavigator();
 
@@ -19,15 +21,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
+<<<<<<< HEAD
         <Menu.Screen name="Home" component={HomeSrc} />
         <Menu.Screen name="Recuperar" component={RecPass} />
+=======
+>>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
         <Menu.Screen
-          name="F*da-se"
+          name="Início"
           component={Start}
           options={{
             headerShown: false,
           }}
         />
+        <Menu.Screen name="Recuperar" component={RecPass} />
         <Menu.Screen
           name="Login"
           component={Login}
@@ -42,10 +48,37 @@ export default function App() {
             headerShown: false,
           }}
         />
+<<<<<<< HEAD
 
         <Menu.Screen name="Lista de produtos" component={Products} />
         <Menu.Screen name="Sair" component={LogOut} />
         <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
+=======
+        <Menu.Screen 
+        name="Home" 
+        component={HomeSrc} 
+        />
+        <Menu.Screen 
+        name="Lista de produtos" 
+        component={Products} 
+        />
+        <Menu.Screen 
+        name="Carrinho" 
+        component={Cart} 
+        />
+        <Menu.Screen 
+        name="Cadastrar Produtos" 
+        component={CadProd} 
+        />
+        <Menu.Screen 
+        name="Contato" 
+        component={Contact} 
+        />
+        <Menu.Screen 
+        name="Sair" 
+        component={LogOut} 
+        />
+>>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
       </Menu.Navigator>
     </NavigationContainer>
   );

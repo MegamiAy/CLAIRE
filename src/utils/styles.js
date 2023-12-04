@@ -407,6 +407,42 @@ export const styles = StyleSheet.create({
 
     elevation: 8,
   },
+
+  //Tela de contato
+
+  FullBodyC: {
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  titleC: {
+    fontWeight: "bold",
+    fontSize: 40,
+    marginRight: 225,
+  },
+  subTitleCr2: {
+    marginTop: 10,
+    marginRight: 110,
+  },
+  BodyC: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  BodyCr: {
+    marginTop: 40,
+  },
+  titleCr: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginTop: 20,
+  },
+  ImageC: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+  },
 });
 
 export default styles;
