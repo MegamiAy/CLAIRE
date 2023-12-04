@@ -62,7 +62,7 @@ export default function Register({ navigation }) {
       <Button
         mode="contained"
         style={styles.ButtonRT}
-        onPress={() => navigation.navigate("F*da-se")}
+        onPress={() => navigation.navigate("Início")}
         textColor="#000"
       >
         <FaArrowLeft />

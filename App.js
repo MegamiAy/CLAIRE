@@ -17,7 +17,6 @@ import Cart from "./src/screens/Cart";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Menu = createDrawerNavigator();
-const Stack = createNativeStackNavigator(); 
 
 export default function App() {
   return (
@@ -28,6 +27,13 @@ export default function App() {
           component={Start}
           options={{
             headerShown: false,
+          }}
+        />
+        <Menu.Screen
+          name="Produtos"
+          component={Products}
+          options={{
+            drawerItemStyle:{height: 0},
           }}
         />
         <Menu.Screen name="Recuperar" component={RecPass} />
@@ -70,16 +76,10 @@ export default function App() {
         component={LogOut} 
         />
       </Menu.Navigator>
-
-      <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={HomeSrc} />
-                <Stack.Screen name="login" component={Login} />
-                <Stack.Screen name="register" component={Register} />
-                <Stack.Screen name="produtos" component={Products}/>
-            </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 
 const screenOptions = {
   headerStyle: {
