@@ -39,7 +39,7 @@ export default function Login({ navigation }) {
       <Button
         mode="contained"
         style={styles.ButtonLT}
-        onPress={() => navigation.navigate("F*da-se")}
+        onPress={() => navigation.navigate("Início")}
         textColor= "#000"
       >
        <FaArrowLeft />
