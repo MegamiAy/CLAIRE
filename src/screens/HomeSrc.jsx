@@ -73,16 +73,16 @@ export default function HomeSrc({ navigation }) {
       </View>
       {/* ESTILIZEM OS TOUCH, COMO BOTÕES PARA PUXAR CADA COLEÇÃO */}
       <TouchableOpacity>
-        <Text>BC</Text>
+        <Text>Blend Collection</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text>ES</Text>
+        <Text>Essential</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text>CS</Text>
+        <Text>Cosmopolitan</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Lista de produtos")}>
-        <Text>ALL</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("ALL")}>
+        <Text>Todos</Text>
       </TouchableOpacity>
       <SafeAreaView style={styles.Colection}>
         <ScrollView>
