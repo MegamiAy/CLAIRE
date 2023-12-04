@@ -218,6 +218,18 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  Colection: {
+    width: "100%",
+    justifyContent: "center",
+  },
+
+  ImgColection: {
+    width: "80%",
+    height: 85,
+    marginTop: 15,
+    marginLeft: "10%",
+  },
+
   //SLIDESSSSS
 
   containerS: {
@@ -380,9 +392,8 @@ export const styles = StyleSheet.create({
   },
 
   SubBoxP: {
-    // backgroundColor: "#f5f5dc",
     padding: 10,
-    // borderWidth: 5,
+    width: "80%",
   },
 
   shadowProp: {

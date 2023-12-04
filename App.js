@@ -19,6 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
+        <Menu.Screen name="Home" component={HomeSrc} />
         <Menu.Screen name="Recuperar" component={RecPass} />
         <Menu.Screen
           name="F*da-se"
@@ -41,7 +42,7 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Menu.Screen name="Home" component={HomeSrc} />
+
         <Menu.Screen name="Lista de produtos" component={Products} />
         <Menu.Screen name="Sair" component={LogOut} />
         <Menu.Screen name="Cadastrar Produtos" component={CadProd} />

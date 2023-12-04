@@ -66,7 +66,7 @@ export default function Products({ navigation }) {
           <Image
             key={imgUrl}
             source={{ uri: imgUrl }}
-            style={{ width: 200, height: 250 }}
+            style={{ width: "100%", height: 250 }}
           />
         ))}
         <Text style={styles.TitleP}>{item.title}</Text>
