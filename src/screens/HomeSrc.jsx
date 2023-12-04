@@ -72,29 +72,18 @@ export default function HomeSrc({ navigation }) {
 
       </View>
       {/* ESTILIZEM OS TOUCH, COMO BOTÕES PARA PUXAR CADA COLEÇÃO */}
-      <TouchableOpacity>
-        <Text>Blend Collection</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>Essential</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>Cosmopolitan</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("ALL")}>
-        <Text>Todos</Text>
-      </TouchableOpacity>
+
       <SafeAreaView style={styles.Colection}>
         <ScrollView>
-          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
-          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
-          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
-          <View>
-            <Text>Produtos recomendados</Text>
-            <TouchableOpacity onPress={ () => {navigation.navigate("Produtos")}}>
-              <Text>penis</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity>
+            <Image style={styles.ImgColection} source={{ uri: "https://i0.wp.com/pagina3.com.br/wp-content/uploads/2022/10/1W7A9392.jpg?resize=600%2C400&ssl=1" }} /> 
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={styles.ImgColection} source={{ uri: "https://topsociety.blog.br/painel/img/topsocie_blog/8880_post_14603.jpg" }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ALL")}>
+            <Image style={styles.ImgColection} source={{ uri: "https://asnamanga.com/wp-content/uploads/2022/10/Claire-Juliani-Copacabana-Palace-Rio-set22-6-scaled.jpg" }} />
+          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
 

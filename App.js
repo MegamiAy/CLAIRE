@@ -27,21 +27,30 @@ export default function App() {
           component={Start}
           options={{
             headerShown: false,
+            drawerItemStyle: { height: 0 },
           }}
         />
         <Menu.Screen
           name="Produtos"
           component={Products}
           options={{
-            drawerItemStyle:{height: 0},
+            drawerItemStyle: { height: 0 },
           }}
         />
-        <Menu.Screen name="Recuperar" component={RecPass} />
+        <Menu.Screen
+          name="Recuperar"
+          component={RecPass}
+          options={{
+            headerShown: false,
+            drawerItemStyle: { height: 0 },
+          }}
+        />
         <Menu.Screen
           name="Login"
           component={Login}
           options={{
             headerShown: false,
+            drawerItemStyle: { height: 0 },
           }}
         />
         <Menu.Screen
@@ -49,37 +58,25 @@ export default function App() {
           component={Register}
           options={{
             headerShown: false,
+            drawerItemStyle: { height: 0 },
           }}
         />
-        <Menu.Screen 
-        name="Home" 
-        component={HomeSrc} 
+        <Menu.Screen name="Home" component={HomeSrc} />
+        <Menu.Screen
+          name="ALL"
+          component={Products}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
         />
-        <Menu.Screen 
-        name="ALL" 
-        component={Products} 
-        />
-        <Menu.Screen 
-        name="Carrinho" 
-        component={Cart} 
-        />
-        <Menu.Screen 
-        name="Cadastrar Produtos" 
-        component={CadProd} 
-        />
-        <Menu.Screen 
-        name="Contato" 
-        component={Contact} 
-        />
-        <Menu.Screen 
-        name="Sair" 
-        component={LogOut} 
-        />
+        <Menu.Screen name="Carrinho" component={Cart} />
+        <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
+        <Menu.Screen name="Contato" component={Contact} />
+        <Menu.Screen name="Sair" component={LogOut} />
       </Menu.Navigator>
     </NavigationContainer>
   );
 }
-
 
 const screenOptions = {
   headerStyle: {
