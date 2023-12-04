@@ -10,7 +10,7 @@ import styles from "../utils/styles";
 import { SafeAreaView } from "react-native";
 import { useState } from "react";
 
-export default function HomeSrc() {
+export default function HomeSrc({navigation}) {
   const images = [
     "https://cdn.pixabay.com/photo/2023/10/12/17/56/after-the-rain-8311416_1280.jpg",
     "https://cdn.pixabay.com/photo/2023/10/24/04/04/trees-8337343_1280.jpg",
@@ -81,8 +81,8 @@ export default function HomeSrc() {
       <TouchableOpacity>
         CS
       </TouchableOpacity>
-      <TouchableOpacity>
-        ALL
+      <TouchableOpacity onPress={()=> navigation.navigate("Lista de produtos")}>
+        <Text>AL</Text>
       </TouchableOpacity>
       <SafeAreaView style={styles.Colection}>
         <ScrollView>
