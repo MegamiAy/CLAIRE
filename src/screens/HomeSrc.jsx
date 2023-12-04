@@ -10,7 +10,7 @@ import styles from "../utils/styles";
 import { SafeAreaView } from "react-native";
 import { useState } from "react";
 
-export default function HomeSrc({navigation}) {
+export default function HomeSrc({ navigation }) {
   const images = [
     "https://cdn.pixabay.com/photo/2023/10/12/17/56/after-the-rain-8311416_1280.jpg",
     "https://cdn.pixabay.com/photo/2023/10/24/04/04/trees-8337343_1280.jpg",
@@ -68,27 +68,27 @@ export default function HomeSrc({navigation}) {
 
       </SafeAreaView>
       <View>
-        <Text style={{fontWeight: "bold", fontSize: 25, marginTop: 40, marginBottom: 25 }}>Coleções</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 25, marginTop: 40, marginBottom: 25 }}>Coleções</Text>
 
       </View>
       {/* ESTILIZEM OS TOUCH, COMO BOTÕES PARA PUXAR CADA COLEÇÃO */}
       <TouchableOpacity>
-        BC
+        <Text>BC</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        ES
+        <Text>ES</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        CS
+        <Text>CS</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=> navigation.navigate("Lista de produtos")}>
-        <Text>AL</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Lista de produtos")}>
+        <Text>ALL</Text>
       </TouchableOpacity>
       <SafeAreaView style={styles.Colection}>
         <ScrollView>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
-          <Image style={styles.ImgColection} source={{uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg"}}/>
+          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
+          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
+          <Image style={styles.ImgColection} source={{ uri: "https://s3.glbimg.com/v1/AUTH_35862ca5c6ab48b992baf1f1b4f7062e/m-extra-globo-com/noticias/celular-e-tecnologia/19902318-c77-4db/w488h275-PROP/73c6c50f-0251-46ce-bfac-58c53d3ddd19.jpg" }} />
           <View>
             <Text>Produtos recomendados</Text>
             <TouchableOpacity></TouchableOpacity>
@@ -97,8 +97,8 @@ export default function HomeSrc({navigation}) {
         </ScrollView>
       </SafeAreaView>
 
-      
-      
+
+
     </View>
   );
 }
