@@ -10,6 +10,7 @@ import User from "./screens/User";
 import Cart from "./screens/Cart";
 import Start from "./screens/Start";
 import Contact from "./screens/Contact";
+import Products from "./screens/Products";
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +61,11 @@ export default function RootNavigation() {
         <Stack.Screen
           name="Contato"
           component={Contact}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Produtos"
+          component={Products}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

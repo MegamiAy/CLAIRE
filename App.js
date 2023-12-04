@@ -14,18 +14,19 @@ import Start from "./src/screens/Start";
 import Products from "./src/screens/Products";
 import Contact from "./src/screens/Contact";
 import Cart from "./src/screens/Cart";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Menu = createDrawerNavigator();
+const Stack = createNativeStackNavigator(); 
 
 export default function App() {
   return (
     <NavigationContainer>
       <Menu.Navigator screenOptions={screenOptions}>
-<<<<<<< HEAD
-        <Menu.Screen name="Home" component={HomeSrc} />
-        <Menu.Screen name="Recuperar" component={RecPass} />
-=======
->>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
+      <Menu.Screen 
+        name="Home" 
+        component={HomeSrc} 
+        />
         <Menu.Screen
           name="Início"
           component={Start}
@@ -48,16 +49,7 @@ export default function App() {
             headerShown: false,
           }}
         />
-<<<<<<< HEAD
-
-        <Menu.Screen name="Lista de produtos" component={Products} />
-        <Menu.Screen name="Sair" component={LogOut} />
-        <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
-=======
-        <Menu.Screen 
-        name="Home" 
-        component={HomeSrc} 
-        />
+        
         <Menu.Screen 
         name="Lista de produtos" 
         component={Products} 
@@ -78,8 +70,14 @@ export default function App() {
         name="Sair" 
         component={LogOut} 
         />
->>>>>>> 121e13b04442cec2225972b41cfd6a9f32b41bbc
       </Menu.Navigator>
+
+      <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={HomeSrc} />
+                <Stack.Screen name="login" component={Login} />
+                <Stack.Screen name="register" component={Register} />
+                <Stack.Screen name="produtos" component={Products}/>
+            </Stack.Navigator>
     </NavigationContainer>
   );
 }
