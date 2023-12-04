@@ -48,7 +48,7 @@ export default function App() {
         component={HomeSrc} 
         />
         <Menu.Screen 
-        name="Lista de produtos" 
+        name="ALL" 
         component={Products} 
         />
         <Menu.Screen 
