@@ -54,13 +54,13 @@ export default function Products({ navigation }) {
     fetchProducts();
   }, []);
 
-  const handleProductPress = (product) => {
+  const handleProductPress = (productId) => {
     // Navegue para a página de detalhes do produto, passando as informações do produto
-    navigation.navigate("ProductDetails", { product });
+    navigation.navigate("ProdDetails", { productId });
   };
 
   const renderProductItem = ({ item }) => (
-    <TouchableOpacity onPress={() => handleProductPress(item)} style={ styles.BoxP }>
+    <TouchableOpacity onPress={() => handleProductPress(item.id)} style={ styles.BoxP }>
       <View style={[styles.SubBoxP, styles.shadowProp]}>
         {item.imgUrls.map((imgUrl) => (
           <Image

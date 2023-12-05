@@ -15,6 +15,7 @@ import Products from "./src/screens/Products";
 import Contact from "./src/screens/Contact";
 import Cart from "./src/screens/Cart";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ProdDetails from "./src/screens/ProdDetails";
 
 const Menu = createDrawerNavigator();
 
@@ -73,6 +74,7 @@ export default function App() {
         <Menu.Screen name="Cadastrar Produtos" component={CadProd} />
         <Menu.Screen name="Contato" component={Contact} />
         <Menu.Screen name="Sair" component={LogOut} />
+        <Menu.Screen name="ProdDetails" component={ProdDetails} />
       </Menu.Navigator>
     </NavigationContainer>
   );
